@@ -12,6 +12,10 @@ class ProductService {
   public create(products: Products): Promise<Products> {
     return this.model.create(products);
   }
+
+  public getAll() {
+    return this.model.getAll();
+  }
 }
 
 export default ProductService;
