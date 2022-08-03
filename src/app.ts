@@ -1,6 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import pRoutes from './routes/routes';
+import pRoutes from './routes/products.routes';
 import errors from './middleware/error.middleware';
 
 const app = express();
