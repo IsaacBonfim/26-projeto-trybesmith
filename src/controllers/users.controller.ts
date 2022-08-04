@@ -7,7 +7,9 @@ class UserController {
 
   public create = async (req: Request, res: Response) => {
     const { username } = await this.uService.create(req.body);
+    
     const secret = 'TheGreatMrOliv3ira';
+    
     const token = JWT.sign({ data: username }, secret);
 
     res.status(201).json({ token });

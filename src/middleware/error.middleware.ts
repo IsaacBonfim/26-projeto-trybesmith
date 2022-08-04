@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import RequiredError from '../errors/errors';
+import RequiredError from '../errors/requiredError';
 
 export default async (err: RequiredError, _req: Request, res: Response, _next: NextFunction) => {
   const { code, message } = err;

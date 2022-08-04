@@ -1,4 +1,4 @@
-import { Pool, ResultSetHeader } from 'mysql2/promise';
+import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import Users from '../interfaces/users.interface';
 
 class UserModel {
@@ -16,6 +16,18 @@ class UserModel {
     );
 
     return { id: insertId, ...user };
+  }
+
+  public async login(user: Users): Promise<Users> {
+    const { username, password } = user;
+    const [[loginUser]] = await this.connection.query<RowDataPacket[]>(
+      `SELECT id, username FROM Trybesmith.Users
+       WHERE username = ? AND password = ?`,
+      [username, password],
+    );
+    
+    console.log(`Model ${loginUser}`);
+    return loginUser as Users;
   }
 }
 

@@ -3,12 +3,14 @@ import 'express-async-errors';
 import pRoutes from './routes/products.routes';
 import uRoutes from './routes/users.routes';
 import oRoutes from './routes/orders.routes';
+import lRoutes from './routes/login.routes';
 import errors from './middleware/error.middleware';
 
 const app = express();
 
 app.use(express.json());
 
+app.use('/login', lRoutes);
 app.use('/products', pRoutes);
 app.use('/users', uRoutes);
 app.use('/orders', oRoutes);
