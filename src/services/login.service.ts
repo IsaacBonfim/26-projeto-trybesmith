@@ -19,7 +19,6 @@ class Login {
     }
     
     const login = await this.model.login({ username: user, password });
-    console.log(login);
     
     if (!login) {
       throw new AuthorizationError('Username or password invalid');
